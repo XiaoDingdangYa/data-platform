@@ -344,6 +344,7 @@ module.exports = function(webpackEnv) {
                 
                 plugins: [
                   [
+                    
                     require.resolve('babel-plugin-named-asset-import'),
                     {
                       loaderMap: {
@@ -353,6 +354,7 @@ module.exports = function(webpackEnv) {
                       },
                     },
                   ],
+                  ["import",{libraryName: "antd",style: "css"}],
                 ],
                 // This is a feature of `babel-loader` for webpack (not Babel itself).
                 // It enables caching results in ./node_modules/.cache/babel-loader/
@@ -467,6 +469,18 @@ module.exports = function(webpackEnv) {
               options: {
                 name: 'static/media/[name].[hash:8].[ext]',
               },
+            },
+            {
+              test: /\.less$/,
+              use: [
+                  require.resolve('style-loader'),
+                  {
+                      loader: require.resolve('css-loader')
+                  },
+                  {
+                      loader: require.resolve('less-loader'), // compiles Less to CSS
+                  },
+              ],
             },
             // ** STOP ** Are you adding a new loader?
             // Make sure to add the new loader(s) before the "file" loader.
