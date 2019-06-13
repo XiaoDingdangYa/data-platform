@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .tabcard{
+            list-style: none;
+            line-height: 20px;
+            border: 1px black solid;
+            padding: 0 5px;
+            text-align: center;
+            float: left;
+        }
+        .content{
+            clear: both;
+            margin: 0 60px;
+        }
+        .content1{
+            display: none;
+        }
+        .sho{
+            display: block
+        }
+    </style>
+</head>
+<body>
+    <ul class="tabs">
+        <li class="tabcard">选项卡1</li>
+        <li class="tabcard">选项卡2</li>
+        <li class="tabcard">选项卡3</li>
+    </ul>
+    <div class="content">
+        <p class="content1 sho">1111111111111</p>
+        <p class="content1">2222222222222</p>
+        <p class="content1">3333333333333</p>
+    </div>
+
+    <script>
+        window.onload = function(){
+        tabs = document.getElementsByClassName('tabs')[0];
+        tabcards = document.getElementsByClassName('tabcard');
+        content = document.getElementsByClassName('content')[0];
+        contents = document.getElementsByClassName('content1');
+
+        for (var index = 0; index < tabcards.length; index++) {
+            
+            
+            tabcards[index].onclick  = (function (index) {
+                return function(){
+                    for (var j = 0; j < contents.length; j++) {
+                        contents[j].classList.remove('sho')
+                    }
+                    contents[index].classList.add('sho');
+                    
+                }
+                
+            })(index)
+            
+        }
+    }
+    </script>
+</body>
+</html>
