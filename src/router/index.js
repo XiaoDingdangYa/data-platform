@@ -1,25 +1,18 @@
 import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
 import { HashRouter, Route, Switch } from 'react-router-dom';
 import userTags from './../userTags/userTags';
+import addUser from './../userAnalysis/addUser'
+import butto from './../button'
 
 class Router extends Component {
-    constructor(props) {
-        super(props);
-        this.state={
-         
-        }
-      }
-    
-    componentDidMount(){
-    }
-
     render() {
         return (
             <HashRouter>
                 <Switch>
-                    <Route path="/" component={userTags}>
-                    </Route>
+                    <Route exact path="/" component={userTags}/>
+                    <Route path='/butto' component={butto}/>
+                    <Route path='/userAnalysis/addUser' component={addUser}/>
+
                 </Switch>
             </HashRouter>
             
